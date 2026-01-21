@@ -23,7 +23,7 @@ body {
 button { border: none; background: none; cursor: pointer; }
 button:focus { outline: none; border: none; }
 
-/* ДЕСКТОПНЕ МЕНЮ (За замовчуванням) */
+/* --- ДЕСКТОПНЕ МЕНЮ --- */
 header {
   position: absolute;
   top: 0;
@@ -48,7 +48,7 @@ header nav ul li a i { width: 25px; color: #ffd700; margin-right: 10px; font-siz
 header nav ul li a:hover { color: #fff; padding-left: 5px; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
 header nav ul li a:hover i { transform: scale(1.2); }
 
-/* ОСНОВНИЙ КОНТЕНТ */
+/* --- ОСНОВНИЙ КОНТЕНТ --- */
 .app { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
 .app__bg { position: absolute; width: 100%; height: 100%; z-index: -5; filter: blur(8px); pointer-events: none; overflow: hidden; }
 .app__bg::before { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: #000; z-index: 1; opacity: 0.6; }
@@ -110,23 +110,19 @@ form input[type="submit"] { background-color: #ffd700; color: #000; font-weight:
         --card-height: 200px;
     }
 
-    /* Змушуємо хедер бути зверху, а не збоку */
+    /* ВАЖЛИВО: Змушуємо хедер бути зверху */
     header {
-        position: relative !important; /* Важливо! */
-        top: 0;
-        left: 0;
+        position: relative !important; 
+        top: 0 !important;
+        left: 0 !important;
         width: 100% !important;
         height: auto !important;
         background: #1a1a2e !important;
-        padding: 10px !important;
+        padding: 15px !important;
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-
-    header h1 {
-        margin: 10px 0;
-        font-size: 1.5rem;
+        text-align: center;
     }
 
     /* Меню в рядок */
@@ -135,49 +131,30 @@ form input[type="submit"] { background-color: #ffd700; color: #000; font-weight:
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
-    }
-
-    #menu1 ul li {
-        margin-bottom: 5px;
+        width: 100%;
     }
 
     #menu1 ul li a {
         background: rgba(255,255,255,0.1);
-        padding: 5px 10px;
-        border-radius: 15px;
+        padding: 8px 12px;
+        border-radius: 20px;
         font-size: 0.8rem;
     }
-
-    /* Приховуємо заголовок "Навігація" і "Бестселери" на телефоні для економії місця */
-    .menu-title, .menu-group:last-child {
-        display: none;
-    }
     
-    .menu-group { margin-bottom: 0; }
+    /* Приховуємо зайве */
+    .menu-group { margin: 0; width: 100%; }
+    .menu-title, .menu-group:last-child { display: none; }
 
-    /* Виправляємо слайдер */
+    /* Контент */
     .app {
-        height: calc(100vh - 150px); /* Висота мінус хедер */
-        align-items: flex-start;
-        padding-top: 40px;
-    }
-
-    .info__wrapper {
-        top: 60% !important;
-    }
-
-    .info h1.text.name {
-        font-size: 1.4rem;
-        line-height: 1.2;
+        height: auto;
+        min-height: 80vh;
+        padding-top: 20px;
     }
     
-    .info p.text.description {
-        font-size: 0.8rem;
-        display: none; /* Можна приховати опис на дуже малих екранах, якщо заважає */
-    }
-
-    /* Кнопки навігації */
-    .cardList__btn {
-        top: 110%; 
-    }
+    .info__wrapper { top: 60% !important; }
+    .cardList__btn { top: 110%; }
+    
+    /* Зменшуємо текст */
+    .info h1.text.name { font-size: 1.5rem; line-height: 1.2; }
 }
