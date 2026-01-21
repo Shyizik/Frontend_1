@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Енн із зелених дахів</title>
+  <link rel="stylesheet" href="st/style3.css">
+  <link rel="icon" href="im/2.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap">
+  
+  <style>
+    /* ТІ Ж САМІ СТИЛІ */
+    body { font-family: 'Montserrat', sans-serif; }
+    header { background: linear-gradient(to right, #0f2027, #203a43, #2c5364); padding: 25px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border-bottom: 3px solid #ffd700; text-align: center; }
+    header h1 { color: #fff; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 20px 0; font-size: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+    #menu1 ul { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
+    #menu1 ul li a { text-decoration: none; color: #e0e0e0; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; padding: 10px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; display: flex; align-items: center; background: rgba(255,255,255,0.05); cursor: pointer; }
+    #menu1 ul li a i { margin-right: 8px; color: #ffd700; }
+    #menu1 ul li a:hover { background-color: #ffd700; color: #000; border-color: #ffd700; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3); }
+    #menu1 ul li a:hover i { color: #000; }
+
+    .price-tag {
+        font-size: 2.5rem;
+        color: #2ecc71; 
+        font-weight: 800;
+        margin: 20px 0 10px 0;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(5px); }
+    .modal-content { background-color: #fff; margin: 5% auto; padding: 30px; border-radius: 15px; position: relative; animation: slideDown 0.4s ease; color: #333; text-align: left; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+    .cart-modal { width: 90%; max-width: 400px; }
+    .catalog-modal { width: 90%; max-width: 900px; }
+    @keyframes slideDown { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+    .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; transition: 0.3s; position: absolute; right: 20px; top: 15px; }
+    .close-btn:hover { color: #000; }
+    .modal h2 { font-size: 1.5rem; margin-bottom: 20px; color: #333; text-align: center; border-bottom: 2px solid #ffd700; padding-bottom: 10px; }
+
+    .book-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
+    .book-card { background: #f9f9f9; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s; display: flex; flex-direction: column; }
+    .book-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .book-img { height: 250px; overflow: hidden; }
+    .book-img img { width: 100%; height: 100%; object-fit: cover; }
+    .book-info { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
+    .book-title { font-weight: 700; font-size: 1rem; margin-bottom: 5px; }
+    .book-price { font-weight: 800; color: #2ecc71; font-size: 1.1rem; margin-top: auto; margin-bottom: 10px; }
+    .buy-btn-small { background: #333; color: #ffd700; border: none; padding: 15px; width: 100%; border-radius: 5px; cursor: pointer; font-weight: 600; text-transform: uppercase; transition: 0.3s; font-size: 1rem; }
+    .buy-btn-small:hover { background: #000; }
+    .details-link { display: block; text-align: center; font-size: 0.8rem; color: #555; text-decoration: underline; margin-top: 10px; }
+
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 0.9rem; }
+    th { background: #333; color: #fff; padding: 10px; text-align: left; }
+    td { border-bottom: 1px solid #ddd; padding: 10px; color: #333; }
+    form label { display: block; margin-top: 10px; font-weight: bold; }
+    form input, form select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+    form input[type="submit"] { background-color: #ffd700; color: #000; font-weight: bold; border: none; cursor: pointer; margin-top: 20px; transition: 0.3s; text-transform: uppercase; }
+    form input[type="submit"]:hover { background-color: #e6c200; }
+    .modal-footer { margin-top: 20px; text-align: center; font-size: 0.7rem; color: #777; border-top: 1px solid #eee; padding-top: 10px; }
+    
+    footer { background: #111; color: #fff; padding: 40px 0; margin-top: 50px; }
+    .footer-columns { display: flex; justify-content: space-around; flex-wrap: wrap; max-width: 1000px; margin: 0 auto; }
+    .footer-column { margin: 10px; text-align: center; }
+    .footer-column h3 { color: #ffd700; margin-bottom: 15px; }
+    .footer-column a { color: #fff; text-decoration: none; border-bottom: 1px solid #ffd700; }
+  </style>
+</head>
+<body>
+ <header>
+   <h1>Енн із зелених дахів</h1>
+   <nav id="menu1">
+     <ul>
+       <li><a href="index.html"><i class="fas fa-home"></i> Головна</a></li>
+       <li><a id="open-catalog"><i class="fas fa-th-large"></i> Каталог</a></li>
+       <li><a id="open-cart"><i class="fas fa-shopping-cart"></i> Кошик</a></li>
+     </ul>
+   </nav>
+ </header>
+ <main>
+   <div>
+    <div class="post">
+    <img height="540" src="https://i.pinimg.com/564x/39/91/63/399163816444e346d6771b2b8ac7aa85.jpg" alt="Обкладинка" class="leftimg">
+    <p>
+      Чи чули ви про таке місце - Зелені Дахи? Саме тут відбуватимуться події книги Люсі-Мод Монтгомері, а саме головної героїні Енн Ширлі. Вона худорлява вогняно-руда сирота, яку випадково взяли до себе брат із сестрою, Метью і Марілла Катберти. Так, саме випадково, бо для допомоги на фермі їм потрібен був хлопчик, а приїхала маленька дівчинка.
+      <br><br>
+      Енн Ширлі має чудернацьку вдачу, яку важко вмістити в одну книгу, тому в серії їх аж 8, починаючи з дитинства, до заміжжя і до старості. Читаючи книгу, ви ніколи не вгадаєте, що ця маленька химерна дівчина зробить цього разу.
+      <br><br>
+      З допитливої, непосидючої, вона стає вихованою, стриманою панночкою, яка залишає теплий слід про себе в серці кожного. Дівчина вчиться бути відповідальною заради свого майбутнього і все ж її зараховують до Королівської гімназії.
+    </p>
+    
+    <div class="price-tag">320 ₴</div>
+    
+    <button class="buy-btn-small" onclick="buyFromPage('anne')" style="width: 250px;">Купити цю книгу</button>
+    </div>
+  </div>
+ </main>
+ <footer>
+ <div class="footer-columns">
+ <div class="footer-column">
+ <h3>Автор:</h3>
+ <p>Юхимчук Богдан ІО-31</p>
+ </div>
+ <div class="footer-column">
+   <h3>Контакти:</h3>
+   <p>
+   Email:
+   <a href="#" style="color:#FAF0CA">contact@mail.com</a>
+   </p>
+     </div>
+   </div>
+ <center><small>Copyright &copy; 2025</small></center>
+ </footer>
+
+ <div id="catalogModal" class="modal">
+    <div class="modal-content catalog-modal">
+        <span class="close-btn close-catalog">&times;</span>
+        <h2><i class="fas fa-th-large"></i> Каталог Книг</h2>
+        <div class="book-grid">
+            <div class="book-card">
+                <div class="book-img"><img src="https://i.pinimg.com/564x/48/86/95/4886957557c3cc6a2c7823657f750f78.jpg" alt="Book"></div>
+                <div class="book-info">
+                    <div class="book-title">Портрет Доріана Грея</div>
+                    <div class="book-price">350 ₴</div>
+                    <button class="buy-btn-small" style="padding: 8px; font-size: 0.8rem;" onclick="buyFromCatalog('dorian')">У кошик</button>
+                    <a href="page.html" class="details-link">Детальніше</a>
+                </div>
+            </div>
+            <div class="book-card">
+                <div class="book-img"><img src="https://i.pinimg.com/564x/a0/e7/06/a0e70617887eccd330e9477eea18febd.jpg" alt="Book"></div>
+                <div class="book-info">
+                    <div class="book-title">Маленькі жінки</div>
+                    <div class="book-price">280 ₴</div>
+                    <button class="buy-btn-small" style="padding: 8px; font-size: 0.8rem;" onclick="buyFromCatalog('women')">У кошик</button>
+                    <a href="page2.html" class="details-link">Детальніше</a>
+                </div>
+            </div>
+            <div class="book-card">
+                <div class="book-img"><img src="https://i.pinimg.com/564x/39/91/63/399163816444e346d6771b2b8ac7aa85.jpg" alt="Book"></div>
+                <div class="book-info">
+                    <div class="book-title">Енн із зелених дахів</div>
+                    <div class="book-price">320 ₴</div>
+                    <button class="buy-btn-small" style="padding: 8px; font-size: 0.8rem;" onclick="buyFromCatalog('anne')">У кошик</button>
+                    <a href="page3.html" class="details-link">Ви тут</a>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+ <div id="cartModal" class="modal">
+    <div class="modal-content cart-modal">
+        <span class="close-btn close-cart">&times;</span>
+        <h2>Ваше замовлення</h2>
+        <form action="#">
+            <label for="book-select">Оберіть книгу:</label>
+            <select id="book-select" name="book">
+                <option value="dorian">Портрет Доріана Грея</option>
+                <option value="women">Маленькі жінки</option>
+                <option value="anne" selected>Енн із зелених дахів</option>
+            </select>
+            <label>Ваші дані:</label>
+            <input type="text" placeholder="Ім'я" required>
+            <input type="email" placeholder="Email" required>
+            <input type="submit" value="ОФОРМИТИ ЗАМОВЛЕННЯ">
+        </form>
+        <div class="modal-footer"><p>&copy; 2025 Юхимчук Богдан. Група ІО-31.</p></div>
+    </div>
+ </div>
+
+ <script>
+    var cartModal = document.getElementById("cartModal");
+    var catalogModal = document.getElementById("catalogModal");
+    var btnOpenCart = document.getElementById("open-cart");
+    var btnOpenCatalog = document.getElementById("open-catalog");
+    var closeCart = document.getElementsByClassName("close-cart")[0];
+    var closeCatalog = document.getElementsByClassName("close-catalog")[0];
+    var bookSelect = document.getElementById("book-select");
+
+    btnOpenCart.onclick = function() { cartModal.style.display = "block"; }
+    closeCart.onclick = function() { cartModal.style.display = "none"; }
+    btnOpenCatalog.onclick = function() { catalogModal.style.display = "block"; }
+    closeCatalog.onclick = function() { catalogModal.style.display = "none"; }
+
+    window.onclick = function(event) {
+        if (event.target == cartModal) cartModal.style.display = "none";
+        if (event.target == catalogModal) catalogModal.style.display = "none";
+    }
+
+    function buyFromCatalog(value) {
+        catalogModal.style.display = "none";
+        bookSelect.value = value;
+        cartModal.style.display = "block";
+    }
+    
+    function buyFromPage(value) {
+        bookSelect.value = value;
+        cartModal.style.display = "block";
+    }
+
+    document.querySelector('#cartModal form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = this.querySelector('input[type="text"]').value;
+        cartModal.querySelector('.modal-content').innerHTML = `<div style="text-align:center; padding:30px;"><i class="fas fa-check-circle" style="font-size:50px; color:#4CAF50; margin-bottom:20px;"></i><h2>Дякуємо, ${name}!</h2><p>Замовлення прийнято.</p><button onclick="location.reload()" style="margin-top:20px; padding:10px 20px; background:#333; color:#fff; border:none; cursor:pointer;">Закрити</button></div>`;
+    });
+ </script>
+</body>
+</html>
