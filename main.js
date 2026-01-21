@@ -1,4 +1,3 @@
-/* main.js - STABLE VERSION */
 const { gsap } = window;
 
 const buttons = {
@@ -12,11 +11,24 @@ const cardInfosContainerEl = document.querySelector(".info__wrapper");
 buttons.next.addEventListener("click", () => swapCards("right"));
 buttons.prev.addEventListener("click", () => swapCards("left"));
 
-// Ініціалізація БЕЗ очікування завантаження
+// Ініціалізація відразу (без очікування)
 function init() {
-    gsap.timeline()
-        .from(".card", { duration: 1, opacity: 0, y: 50, stagger: 0.1 })
-        .from(".info", { duration: 1, opacity: 0, y: 20 }, "-=0.5");
+    let tl = gsap.timeline();
+    tl.to(cardsContainerEl.children, {
+        duration: 0.1,
+        opacity: 1,
+    })
+    .from(".card", {
+        duration: 1,
+        opacity: 0,
+        y: 50,
+        stagger: 0.1,
+    })
+    .from(".info", {
+        duration: 1,
+        opacity: 0,
+        y: 20,
+    }, "-=0.5");
 }
 init();
 
@@ -31,7 +43,7 @@ function swapCards(direction) {
 
     changeInfo(direction);
     
-    // Ручна зміна класів для гарантованої роботи
+    // Ручне перемикання класів
     currentCardEl.classList.remove("current--card");
     previousCardEl.classList.remove("previous--card");
     nextCardEl.classList.remove("next--card");
