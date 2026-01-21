@@ -1,68 +1,62 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookshelf</title>
-    <link rel="stylesheet" href="st/style.css?v=2024">
+    <link rel="stylesheet" href="st/style.css?v=8888">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&amp;display=swap">
+    <title>Bookshelf - Магазин Книг</title>
     <link rel="icon" type="image/png" href="im/1.png">
 </head>
 
 <body>
-    <header>
-        <h1><i class="fas fa-book-open" style="color:#ffd700; margin-right: 10px;"></i>Bookshelf</h1>
-        <nav id="menu1">
-            <div class="menu-group">
-                <div class="menu-title">Навігація</div>
-                <ul>
-                    <li><a href="#"><i class="fas fa-home"></i> Головна</a></li>
-                    <li><a href="report.html"><i class="fas fa-info-circle"></i> Про Проєкт</a></li>
-                    <li><a id="open-catalog"><i class="fas fa-th-large"></i> Каталог</a></li>
-                    <li><a id="open-cart"><i class="fas fa-shopping-cart"></i> Кошик</a></li>
-                </ul>
-            </div>
-            <div class="menu-group">
-                <div class="menu-title">Бестселери</div>
-                <ul>
-                    <li><a href="page.html"><i class="fas fa-book"></i> Портрет Доріана Грея</a></li>
-                    <li><a href="page2.html"><i class="fas fa-book"></i> Маленькі жінки</a></li>
-                    <li><a href="page3.html"><i class="fas fa-book"></i> Енн із зелених дахів</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
+  <header>
+      <h1><i class="fas fa-book-open" style="color:#ffd700; margin-right: 10px;"></i>Bookshelf</h1>
+      <nav id="menu1">
+          <div class="menu-group">
+              <div class="menu-title">Навігація</div>
+              <ul>
+                <li><a href="#" style="color: #fff;"><i class="fas fa-home"></i> Головна</a></li>
+                <li><a href="report.html"><i class="fas fa-info-circle"></i> Про Проєкт</a></li>
+                <li><a id="open-catalog"><i class="fas fa-th-large"></i> Каталог</a></li>
+                <li><a id="open-cart"><i class="fas fa-shopping-cart"></i> Кошик</a></li>
+              </ul>
+          </div>
+          <div class="menu-group">
+            <div class="menu-title">Бестселери</div>
+            <ul>
+              <li><a href="page.html"><i class="fas fa-book"></i> Портрет Доріана Грея</a></li>
+              <li><a href="page2.html"><i class="fas fa-book"></i> Маленькі жінки</a></li>
+              <li><a href="page3.html"><i class="fas fa-book"></i> Енн із зелених дахів</a></li>
+            </ul>
+        </div>
+     </nav>
+  </header>
+    
     <div class="app">
         <div class="cardList">
             <div class="cards__wrapper">
                 <div class="card current--card">
-                    <div class="card__image">
-                        <img src="https://i.pinimg.com/564x/48/86/95/4886957557c3cc6a2c7823657f750f78.jpg" alt="Dorian" />
-                    </div>
+                    <div class="card__image"><img src="https://i.pinimg.com/564x/48/86/95/4886957557c3cc6a2c7823657f750f78.jpg" alt="Dorian" /></div>
                 </div>
                 <div class="card next--card">
-                    <div class="card__image">
-                        <img src="https://i.pinimg.com/564x/a0/e7/06/a0e70617887eccd330e9477eea18febd.jpg" alt="Women" />
-                    </div>
+                    <div class="card__image"><img src="https://i.pinimg.com/564x/a0/e7/06/a0e70617887eccd330e9477eea18febd.jpg" alt="Women" /></div>
                 </div>
                 <div class="card previous--card">
-                    <div class="card__image">
-                        <img src="https://i.pinimg.com/564x/39/91/63/399163816444e346d6771b2b8ac7aa85.jpg" alt="Anne" />
-                    </div>
+                    <div class="card__image"><img src="https://i.pinimg.com/564x/39/91/63/399163816444e346d6771b2b8ac7aa85.jpg" alt="Anne" /></div>
                 </div>
             </div>
         </div>
-
+        
         <div class="infoList">
             <div class="info__wrapper">
                 <button class="cardList__btn btn btn--left">
-                    <div class="icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                    </div>
+                    <div class="icon"><i class="fas fa-chevron-left"></i></div>
                 </button>
-
+                
                 <div class="info current--info">
                     <h1 class="text name">"Портрет Доріана Грея"</h1>
                     <h4 class="text location">Оскар Вайлд</h4>
@@ -78,35 +72,27 @@
                     <h4 class="text location">Люсі-Мод Монтгомері</h4>
                     <p class="text description">Пригоди рудоволосої дівчинки Енн.</p>
                 </div>
-
+                
                 <button class="cardList__btn btn btn--right">
-                    <div class="icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                    </div>
+                    <div class="icon"><i class="fas fa-chevron-right"></i></div>
                 </button>
             </div>
         </div>
-
+        
         <div class="app__bg">
-            <div class="app__bg__image current--image">
-                <img src="https://i.pinimg.com/564x/48/86/95/4886957557c3cc6a2c7823657f750f78.jpg" alt="" />
-            </div>
-            <div class="app__bg__image next--image">
-                <img src="https://i.pinimg.com/564x/a0/e7/06/a0e70617887eccd330e9477eea18febd.jpg" alt="" />
-            </div>
-            <div class="app__bg__image previous--image">
-                <img src="https://i.pinimg.com/564x/39/91/63/399163816444e346d6771b2b8ac7aa85.jpg" alt="" />
-            </div>
+            <div class="app__bg__image current--image"><img src="https://i.pinimg.com/564x/48/86/95/4886957557c3cc6a2c7823657f750f78.jpg" alt="" /></div>
+            <div class="app__bg__image next--image"><img src="https://i.pinimg.com/564x/a0/e7/06/a0e70617887eccd330e9477eea18febd.jpg" alt="" /></div>
+            <div class="app__bg__image previous--image"><img src="https://i.pinimg.com/564x/39/91/63/399163816444e346d6771b2b8ac7aa85.jpg" alt="" /></div>
         </div>
     </div>
-
+    
     <div id="catalogModal" class="modal">
         <div class="modal-content catalog-modal">
             <span class="close-btn close-catalog">&times;</span>
             <h2><i class="fas fa-th-large"></i> Каталог Книг</h2>
             <div class="book-grid">
                 <div class="book-card">
-                    <div class="book-img"><img src="https://i.pinimg.com/564x/48/86/95/4886957557c3cc6a2c7823657f750f78.jpg"></div>
+                    <div class="book-img"><img src="https://i.pinimg.com/564x/48/86/95/4886957557c3cc6a2c7823657f750f78.jpg" alt="Book"></div>
                     <div class="book-info">
                         <div class="book-title">Портрет Доріана Грея</div>
                         <div class="book-price">350 ₴</div>
@@ -115,7 +101,7 @@
                     </div>
                 </div>
                 <div class="book-card">
-                    <div class="book-img"><img src="https://i.pinimg.com/564x/a0/e7/06/a0e70617887eccd330e9477eea18febd.jpg"></div>
+                    <div class="book-img"><img src="https://i.pinimg.com/564x/a0/e7/06/a0e70617887eccd330e9477eea18febd.jpg" alt="Book"></div>
                     <div class="book-info">
                         <div class="book-title">Маленькі жінки</div>
                         <div class="book-price">280 ₴</div>
@@ -124,7 +110,7 @@
                     </div>
                 </div>
                 <div class="book-card">
-                    <div class="book-img"><img src="https://i.pinimg.com/564x/39/91/63/399163816444e346d6771b2b8ac7aa85.jpg"></div>
+                    <div class="book-img"><img src="https://i.pinimg.com/564x/39/91/63/399163816444e346d6771b2b8ac7aa85.jpg" alt="Book"></div>
                     <div class="book-info">
                         <div class="book-title">Енн із зелених дахів</div>
                         <div class="book-price">320 ₴</div>
@@ -141,62 +127,63 @@
             <span class="close-btn close-cart">&times;</span>
             <h2>Ваше замовлення</h2>
             <form action="#">
-                <label>Книга:</label>
-                <select id="book-select">
+                <label for="book-select">Оберіть книгу:</label>
+                <select id="book-select" name="book">
                     <option value="dorian">Портрет Доріана Грея</option>
                     <option value="women">Маленькі жінки</option>
                     <option value="anne">Енн із зелених дахів</option>
                 </select>
-                <label>Ім'я:</label>
-                <input type="text" placeholder="Введіть ім'я" required>
-                <input type="submit" value="ОФОРМИТИ">
+                <label>Ваші дані:</label>
+                <input type="text" placeholder="Ім'я" required>
+                <input type="email" placeholder="Email" required>
+                <input type="submit" value="ОФОРМИТИ ЗАМОВЛЕННЯ">
             </form>
+            <div class="modal-footer"><p>&copy; 2025 Юхимчук Богдан. Група ІО-31.</p></div>
         </div>
     </div>
 
     <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/gsap.min.js"></script>
     <script src="main.js"></script>
-
+    
     <script>
-        /* Логіка модальних вікон */
-        const cartModal = document.getElementById("cartModal");
-        const catalogModal = document.getElementById("catalogModal");
-        const bookSelect = document.getElementById("book-select");
+        var cartModal = document.getElementById("cartModal");
+        var catalogModal = document.getElementById("catalogModal");
+        
+        var btnOpenCart = document.getElementById("open-cart");
+        var btnOpenCatalog = document.getElementById("open-catalog");
+        
+        var closeCart = document.getElementsByClassName("close-cart")[0];
+        var closeCatalog = document.getElementsByClassName("close-catalog")[0];
+        
+        var bookSelect = document.getElementById("book-select");
 
-        // Відкриття
-        document.getElementById("open-cart").onclick = () => cartModal.style.display = "block";
-        document.getElementById("open-catalog").onclick = () => catalogModal.style.display = "block";
+        btnOpenCart.onclick = function() { cartModal.style.display = "block"; }
+        closeCart.onclick = function() { cartModal.style.display = "none"; }
 
-        // Закриття
-        document.querySelectorAll(".close-btn").forEach(btn => {
-            btn.onclick = () => {
-                cartModal.style.display = "none";
-                catalogModal.style.display = "none";
-            }
-        });
+        btnOpenCatalog.onclick = function() { catalogModal.style.display = "block"; }
+        closeCatalog.onclick = function() { catalogModal.style.display = "none"; }
 
-        // Закриття по кліку на фон
-        window.onclick = (e) => {
-            if (e.target == cartModal) cartModal.style.display = "none";
-            if (e.target == catalogModal) catalogModal.style.display = "none";
+        window.onclick = function(event) {
+            if (event.target == cartModal) { cartModal.style.display = "none"; }
+            if (event.target == catalogModal) { catalogModal.style.display = "none"; }
         }
 
-        // Купівля з каталогу
-        function buyFromCatalog(val) {
+        function buyFromCatalog(value) {
             catalogModal.style.display = "none";
-            bookSelect.value = val;
+            bookSelect.value = value;
             cartModal.style.display = "block";
         }
 
-        // Обробка форми
         document.querySelector('#cartModal form').addEventListener('submit', function(e) {
             e.preventDefault();
+            const name = this.querySelector('input[type="text"]').value;
             cartModal.querySelector('.modal-content').innerHTML = `
                 <div style="text-align:center; padding:30px;">
-                    <h2 style="border:none;">Дякуємо!</h2>
-                    <p>Замовлення прийнято.</p>
-                    <button onclick="location.reload()" style="margin-top:10px; padding:10px 20px; background:#333; color:#fff; border:none; cursor:pointer;">ОК</button>
+                    <i class="fas fa-check-circle" style="font-size:50px; color:#4CAF50; margin-bottom:20px;"></i>
+                    <h2 style="border:none;">Дякуємо, ${name}!</h2>
+                    <p>Ваше замовлення успішно прийнято.</p>
+                    <button onclick="location.reload()" style="margin-top:20px; padding:10px 25px; background:#333; color:#fff; border:none; cursor:pointer; border-radius:5px;">Закрити</button>
                 </div>
             `;
         });
