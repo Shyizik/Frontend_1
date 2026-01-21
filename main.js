@@ -1,3 +1,4 @@
+/* main.js - STABLE VERSION */
 const { gsap } = window;
 
 const buttons = {
@@ -11,25 +12,23 @@ const cardInfosContainerEl = document.querySelector(".info__wrapper");
 buttons.next.addEventListener("click", () => swapCards("right"));
 buttons.prev.addEventListener("click", () => swapCards("left"));
 
-// Ініціалізація відразу (без очікування)
+// Запуск відразу (без очікування картинок)
 function init() {
     let tl = gsap.timeline();
     tl.to(cardsContainerEl.children, {
-        duration: 0.1,
-        opacity: 1,
-    })
-    .from(".card", {
-        duration: 1,
-        opacity: 0,
-        y: 50,
-        stagger: 0.1,
+        delay: 0.15,
+        duration: 0.5,
+        opacity: 1, // Робимо видимим відразу
+        "--card-translateY-offset": "0%",
     })
     .from(".info", {
-        duration: 1,
+        duration: 0.5,
         opacity: 0,
-        y: 20,
-    }, "-=0.5");
+        y: 20
+    });
 }
+
+// Викликаємо init() миттєво
 init();
 
 function swapCards(direction) {
@@ -42,48 +41,52 @@ function swapCards(direction) {
     const nextBgImageEl = appBgContainerEl.querySelector(".next--image");
 
     changeInfo(direction);
-    
-    // Ручне перемикання класів
-    currentCardEl.classList.remove("current--card");
-    previousCardEl.classList.remove("previous--card");
-    nextCardEl.classList.remove("next--card");
+    swapCardsClass();
 
-    currentBgImageEl.classList.remove("current--image");
-    previousBgImageEl.classList.remove("previous--image");
-    nextBgImageEl.classList.remove("next--image");
+    function swapCardsClass() {
+        // Видалення старих класів
+        currentCardEl.classList.remove("current--card");
+        previousCardEl.classList.remove("previous--card");
+        nextCardEl.classList.remove("next--card");
 
-    currentCardEl.style.zIndex = "50";
-    currentBgImageEl.style.zIndex = "-2";
+        currentBgImageEl.classList.remove("current--image");
+        previousBgImageEl.classList.remove("previous--image");
+        nextBgImageEl.classList.remove("next--image");
 
-    if (direction === "right") {
-        previousCardEl.style.zIndex = "20";
-        nextCardEl.style.zIndex = "30";
+        // Встановлення Z-Index
+        currentCardEl.style.zIndex = "50";
+        currentBgImageEl.style.zIndex = "-2";
 
-        nextCardEl.classList.add("current--card");
-        currentCardEl.classList.add("previous--card");
-        previousCardEl.classList.add("next--card");
+        if (direction === "right") {
+            previousCardEl.style.zIndex = "20";
+            nextCardEl.style.zIndex = "30";
 
-        nextBgImageEl.classList.add("current--image");
-        currentBgImageEl.classList.add("previous--image");
-        previousBgImageEl.classList.add("next--image");
-    } else if (direction === "left") {
-        previousCardEl.style.zIndex = "30";
-        nextCardEl.style.zIndex = "20";
+            nextCardEl.classList.add("current--card");
+            currentCardEl.classList.add("previous--card");
+            previousCardEl.classList.add("next--card");
 
-        previousCardEl.classList.add("current--card");
-        nextCardEl.classList.add("previous--card");
-        currentCardEl.classList.add("next--card");
+            nextBgImageEl.classList.add("current--image");
+            currentBgImageEl.classList.add("previous--image");
+            previousBgImageEl.classList.add("next--image");
+        } else if (direction === "left") {
+            previousCardEl.style.zIndex = "30";
+            nextCardEl.style.zIndex = "20";
 
-        previousBgImageEl.classList.add("current--image");
-        nextBgImageEl.classList.add("previous--image");
-        currentBgImageEl.classList.add("next--image");
+            previousCardEl.classList.add("current--card");
+            nextCardEl.classList.add("previous--card");
+            currentCardEl.classList.add("next--card");
+
+            previousBgImageEl.classList.add("current--image");
+            nextBgImageEl.classList.add("previous--image");
+            currentBgImageEl.classList.add("next--image");
+        }
     }
 }
 
 function changeInfo(direction) {
-    const currentInfoEl = cardInfosContainerEl.querySelector(".current--info");
-    const previousInfoEl = cardInfosContainerEl.querySelector(".previous--info");
-    const nextInfoEl = cardInfosContainerEl.querySelector(".next--info");
+    let currentInfoEl = cardInfosContainerEl.querySelector(".current--info");
+    let previousInfoEl = cardInfosContainerEl.querySelector(".previous--info");
+    let nextInfoEl = cardInfosContainerEl.querySelector(".next--info");
 
     gsap.timeline()
         .to([buttons.prev, buttons.next], { duration: 0.2, opacity: 0.5, pointerEvents: "none" })
