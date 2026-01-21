@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="st/style.css?v=2">
+    <link rel="stylesheet" href="st/style.css?v=3">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&amp;display=swap">
-    
     <title>Bookshelf - Магазин Книг</title>
     <link rel="icon" type="image/png" href="im/1.png">
 </head>
@@ -42,13 +42,19 @@
         <div class="cardList">
             <div class="cards__wrapper">
                 <div class="card current--card">
-                    <div class="card__image"><img src="https://i.pinimg.com/564x/48/86/95/4886957557c3cc6a2c7823657f750f78.jpg" alt="Доріан Грей" /></div>
+                    <div class="card__image">
+                        <img src="https://i.pinimg.com/564x/48/86/95/4886957557c3cc6a2c7823657f750f78.jpg" alt="Доріан Грей" />
+                    </div>
                 </div>
                 <div class="card next--card">
-                    <div class="card__image"><img src="https://i.pinimg.com/564x/a0/e7/06/a0e70617887eccd330e9477eea18febd.jpg" alt="Маленькі жінки" /></div>
+                    <div class="card__image">
+                        <img src="https://i.pinimg.com/564x/a0/e7/06/a0e70617887eccd330e9477eea18febd.jpg" alt="Маленькі жінки" />
+                    </div>
                 </div>
                 <div class="card previous--card">
-                    <div class="card__image"><img src="https://i.pinimg.com/564x/39/91/63/399163816444e346d6771b2b8ac7aa85.jpg" alt="Енн із зелених дахів" /></div>
+                    <div class="card__image">
+                        <img src="https://i.pinimg.com/564x/39/91/63/399163816444e346d6771b2b8ac7aa85.jpg" alt="Енн із зелених дахів" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,9 +90,15 @@
         </div>
         
         <div class="app__bg">
-            <div class="app__bg__image current--image"><img src="https://i.pinimg.com/564x/48/86/95/4886957557c3cc6a2c7823657f750f78.jpg" alt="" /></div>
-            <div class="app__bg__image next--image"><img src="https://i.pinimg.com/564x/a0/e7/06/a0e70617887eccd330e9477eea18febd.jpg" alt="" /></div>
-            <div class="app__bg__image previous--image"><img src="https://i.pinimg.com/564x/39/91/63/399163816444e346d6771b2b8ac7aa85.jpg" alt="" /></div>
+            <div class="app__bg__image current--image">
+                <img src="https://i.pinimg.com/564x/48/86/95/4886957557c3cc6a2c7823657f750f78.jpg" alt="" />
+            </div>
+            <div class="app__bg__image next--image">
+                <img src="https://i.pinimg.com/564x/a0/e7/06/a0e70617887eccd330e9477eea18febd.jpg" alt="" />
+            </div>
+            <div class="app__bg__image previous--image">
+                <img src="https://i.pinimg.com/564x/39/91/63/399163816444e346d6771b2b8ac7aa85.jpg" alt="" />
+            </div>
         </div>
     </div>
     
@@ -173,35 +185,31 @@
         var closeCatalog = document.getElementsByClassName("close-catalog")[0];
         var bookSelect = document.getElementById("book-select");
 
-        // Відкриття вікон
         btnOpenCart.onclick = function() { cartModal.style.display = "block"; }
         closeCart.onclick = function() { cartModal.style.display = "none"; }
         btnOpenCatalog.onclick = function() { catalogModal.style.display = "block"; }
         closeCatalog.onclick = function() { catalogModal.style.display = "none"; }
 
-        // Закриття при кліку на фон
         window.onclick = function(event) {
             if (event.target == cartModal) cartModal.style.display = "none";
             if (event.target == catalogModal) catalogModal.style.display = "none";
         }
 
-        // Логіка покупки з каталогу
         function buyFromCatalog(value) {
             catalogModal.style.display = "none";
             bookSelect.value = value;
             cartModal.style.display = "block";
         }
 
-        // Імітація відправки форми
         document.querySelector('#cartModal form').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = this.querySelector('input[type="text"]').value;
             cartModal.querySelector('.modal-content').innerHTML = `
                 <div style="text-align:center; padding:30px;">
                     <i class="fas fa-check-circle" style="font-size:50px; color:#4CAF50; margin-bottom:20px;"></i>
-                    <h2>Дякуємо, ${name}!</h2>
-                    <p>Ваше замовлення прийнято.</p>
-                    <button onclick="location.reload()" style="margin-top:20px; padding:10px 20px; background:#333; color:#fff; border:none; cursor:pointer;">Закрити</button>
+                    <h2 style="border:none;">Дякуємо, ${name}!</h2>
+                    <p>Ваше замовлення успішно прийнято.</p>
+                    <button onclick="location.reload()" style="margin-top:20px; padding:10px 25px; background:#333; color:#fff; border:none; cursor:pointer; border-radius:5px;">Закрити</button>
                 </div>
             `;
         });
