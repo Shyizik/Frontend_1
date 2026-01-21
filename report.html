@@ -14,7 +14,7 @@
             color: #333;
         }
         
-        /* Бокове меню */
+        /* Бокове меню (Десктоп) */
         nav {
             width: 280px;
             background-color: #2c3e50;
@@ -25,6 +25,7 @@
             left: 0;
             overflow-y: auto;
             padding-top: 20px;
+            z-index: 1000;
         }
         
         nav h3 {
@@ -83,7 +84,6 @@
             margin-bottom: 20px;
         }
         
-        /* Стилі для коду */
         pre {
             background: #2d2d2d;
             color: #f8f8f2;
@@ -94,7 +94,6 @@
             font-size: 0.9em;
         }
 
-        /* Стилі для картинок */
         .screenshot {
             text-align: center;
             margin: 30px 0;
@@ -106,198 +105,8 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .screenshot img:hover {
-            transform: scale(1.02);
         }
         
         .caption {
             display: block;
-            margin-top: 10px;
-            color: #7f8c8d;
-            font-style: italic;
-            font-weight: 500;
-        }
-        
-        /* Посилання */
-        a.link-btn {
-            display: inline-block;
-            background: #3498db;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-right: 10px;
-            font-weight: bold;
-        }
-        a.link-btn:hover {
-            background: #2980b9;
-        }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <h3>Звіт з ЛР №1</h3>
-        <ul>
-            <li><a href="#topic">1. Тема та Постановка задачі</a></li>
-            <li><a href="#links">2. Посилання на проєкт</a></li>
-            <li><a href="#structure">3. Структура проєкту</a></li>
-            <li><a href="#code-fragments">4. Код програми</a></li>
-            <li><a href="#results">5. Результати (Скріншоти)</a></li>
-            <li><a href="#github-deploy">6. Публікація на GitHub</a></li>
-            <li><a href="#conclusion">7. Висновки</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <section id="header">
-            <h1 style="text-align: center; border: none;">ЗВІТ</h1>
-            <h2 style="text-align: center; border: none; font-size: 1.2em; color: #555;">з лабораторної роботи №1<br>з дисципліни "Основи Front-end технологій"</h2>
-            <div class="info-block">
-                <p><strong>Виконав:</strong> студент групи ІО-31 Юхимчук Богдан</p>
-                <p><strong>Залікова книга:</strong> 3125</p>
-                <p><strong>Рік:</strong> 2025</p>
-            </div>
-        </section>
-
-        <section id="topic">
-            <h2>1. Тема та Постановка задачі</h2>
-            <p><strong>Тема:</strong> Структура HTML-документа. Вибір предметної області. Розробка структури веб-сайту.</p>
-            <p><strong>Мета:</strong> Придбати практичні навички роботи з HTML-документом, створення структури проекту, використання основних тегів розмітки, таблиць, форм, посилань та зображень. Реалізувати багатосторінковий сайт.</p>
-            <p><strong>Завдання:</strong> Розробити веб-сайт "Bookshelf - Магазин Книг" з каталогом, детальним описом книг та кошиком.</p>
-        </section>
-
-        <section id="links">
-            <h2>2. Посилання на проєкт</h2>
-            <p>
-                <a href="https://github.com/shyizik/Frontend_1" class="link-btn" target="_blank"><i class="fab fa-github"></i> Репозиторій GitHub</a>
-                <a href="https://shyizik.github.io/Frontend_1/" class="link-btn" target="_blank"><i class="fas fa-globe"></i> Живий сайт (Pages)</a>
-            </p>
-        </section>
-
-        <section id="structure">
-            <h2>3. Структура проєкту</h2>
-            <p>Проєкт складається з HTML сторінок, файлів стилів (CSS), скриптів (JS) та зображень.</p>
-            <div class="screenshot">
-                <img src="im/git.jpg" alt="Структура файлів">
-                <span class="caption">Рис. 1. Файлова структура проєкту на GitHub</span>
-            </div>
-            <ul>
-                <li><strong>index.html</strong> - Головна сторінка зі слайдером.</li>
-                <li><strong>page.html, page2.html, page3.html</strong> - Сторінки опису окремих книг.</li>
-                <li><strong>st/</strong> - Папка зі стилями (style.css, style2.css...).</li>
-                <li><strong>im/</strong> - Папка із зображеннями.</li>
-                <li><strong>main.js</strong> - Скрипт для логіки слайдера та модальних вікон.</li>
-            </ul>
-        </section>
-
-        <section id="code-fragments">
-            <h2>4. Код програми</h2>
-            <h3>4.1. HTML (Головна сторінка)</h3>
-            <pre>
-&lt;!-- Фрагмент index.html --&gt;
-&lt;header&gt;
-  &lt;h1&gt;&lt;i class="fas fa-book-open"&gt;&lt;/i&gt;Bookshelf&lt;/h1&gt;
-  &lt;nav id="menu1"&gt;
-      &lt;div class="menu-group"&gt;
-          &lt;div class="menu-title"&gt;Навігація&lt;/div&gt;
-          &lt;ul&gt;
-            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="fas fa-home"&gt;&lt;/i&gt; Головна&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a id="open-catalog"&gt;&lt;i class="fas fa-th-large"&gt;&lt;/i&gt; Каталог&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a id="open-cart"&gt;&lt;i class="fas fa-shopping-cart"&gt;&lt;/i&gt; Кошик&lt;/a&gt;&lt;/li&gt;
-          &lt;/ul&gt;
-      &lt;/div&gt;
- &lt;/nav&gt;
-&lt;/header&gt;
-            </pre>
-
-            <h3>4.2. CSS (Стилізація карток)</h3>
-            <pre>
-/* Фрагмент style.css */
-.card {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) ...;
-  width: var(--card-width);
-  height: var(--card-height);
-  transition: transform 800ms ease;
-}
-.price-tag {
-    font-size: 2.5rem;
-    color: #2ecc71;
-    font-weight: 800;
-}
-            </pre>
-            
-            <h3>4.3. JavaScript (Модальні вікна)</h3>
-            <pre>
-// Фрагмент скрипта для кошика
-function buyFromCatalog(value) {
-    catalogModal.style.display = "none";
-    bookSelect.value = value;
-    cartModal.style.display = "block";
-}
-
-document.querySelector('#cartModal form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    // Логіка відправки форми...
-});
-            </pre>
-        </section>
-
-        <section id="results">
-            <h2>5. Результати виконання (Скріншоти)</h2>
-            
-            <div class="screenshot">
-                <img src="im/main.jpg" alt="Головна сторінка">
-                <span class="caption">Рис. 2. Головна сторінка сайту (Слайдер GSAP)</span>
-            </div>
-
-            <div class="screenshot">
-                <img src="im/Sc_1.jpg" alt="Сторінка Доріана Грея">
-                <span class="caption">Рис. 3. Сторінка книги "Портрет Доріана Грея"</span>
-            </div>
-
-            <div class="screenshot">
-                <img src="im/Sc_2.jpg" alt="Сторінка Маленькі жінки">
-                <span class="caption">Рис. 4. Сторінка книги "Маленькі жінки" (Фіолетова тема)</span>
-            </div>
-
-            <div class="screenshot">
-                <img src="im/Sc_3.jpg" alt="Сторінка Енн із зелених дахів">
-                <span class="caption">Рис. 5. Сторінка книги "Енн із зелених дахів" (Зелена тема)</span>
-            </div>
-        </section>
-
-        <section id="github-deploy">
-            <h2>6. Публікація на GitHub Pages</h2>
-            <p>Проєкт було завантажено на GitHub та налаштовано автоматичне розгортання через GitHub Pages.</p>
-            
-            <div class="screenshot">
-                <img src="im/git.jpg" alt="Налаштування Pages">
-                <span class="caption">Рис. 6. Успішна збірка сайту (Deploy from branch)</span>
-            </div>
-            
-            <div class="screenshot">
-                <img src="im/git_p.jpg" alt="Вибір гілки">
-                <span class="caption">Рис. 7. Налаштування джерела (master/root)</span>
-            </div>
-        </section>
-
-        <section id="conclusion">
-            <h2>7. Висновки</h2>
-            <p>
-                В ході виконання лабораторної роботи я розробив веб-сайт для книжкового магазину. 
-                Було створено структуру сайту з чотирьох HTML-сторінок, підключено різні файли стилів для кожної книги 
-                (для створення унікальної атмосфери). Реалізовано інтерактивні елементи: слайдер на головній сторінці, 
-                спливаючі вікна для каталогу та кошика замовлень. Сайт успішно опубліковано на хостингу GitHub Pages.
-            </p>
-        </section>
-
-    </main>
-</body>
-</html>
+            margin-top:
