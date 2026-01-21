@@ -1,422 +1,70 @@
+/* --- АДАПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ (style.css) --- */
 
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap");
-:root {
-  --card-width: 200px;
-  --card-height: 300px;
-  --card-transition-duration: 800ms;
-  --card-transition-easing: ease;
-}
+@media only screen and (max-width: 768px) {
+    /* 1. Змінюємо розмір карток для телефонів */
+    :root {
+        --card-width: 140px;
+        --card-height: 220px;
+    }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+    /* 2. Меню переносимо нагору */
+    header {
+        width: 100%;
+        height: auto;
+        position: relative; /* Більше не фіксоване збоку */
+        background: rgba(0, 0, 0, 0.8);
+        padding: 15px;
+        text-align: center;
+        z-index: 1000;
+    }
 
-body {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.787);
-  overflow: hidden;
-}
+    header h1 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
 
-button {
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-button:focus {
-  outline: none;
-  border: none;
-}
+    /* Вирівнюємо пункти меню в рядок або сітку */
+    #menu1 ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
 
-.app {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.app__bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: -5;
-  filter: blur(8px);
-  pointer-events: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  overflow: hidden;
-}
-.app__bg::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  z-index: 1;
-  opacity: 0.8;
-}
-.app__bg__image {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) translateX(var(--image-translate-offset, 0));
-  width: 180%;
-  height: 180%;
-  transition: transform 1000ms ease, opacity 1000ms ease;
-  overflow: hidden;
-}
-.app__bg__image img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-}
-.app__bg__image.current--image {
-  opacity: 1;
-  --image-translate-offset: 0;
-}
-.app__bg__image.previous--image,
-.app__bg__image.next--image {
-  opacity: 0;
-}
-.app__bg__image.previous--image {
-  --image-translate-offset: -25%;
-}
-.app__bg__image.next--image {
-  --image-translate-offset: 25%;
-}
+    /* Приховуємо менш важливі елементи меню, якщо треба, або зменшуємо відступи */
+    .menu-group {
+        margin-bottom: 15px;
+        width: 100%;
+    }
 
-.cardList {
-  position: absolute;
-  width: calc(3 * var(--card-width));
-  height: auto;
-}
-.cardList__btn {
-  --btn-size: 35px;
-  width: var(--btn-size);
-  height: var(--btn-size);
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 100;
-}
-.cardList__btn.btn--left {
-  left: -5%;
-}
-.cardList__btn.btn--right {
-  right: -5%;
-}
-.cardList__btn .icon {
-  width: 100%;
-  height: 100%;
-}
-.cardList__btn .icon svg {
-  width: 100%;
-  height: 100%;
-}
-.cardList .cards__wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  perspective: 1000px;
-}
+    /* 3. Центруємо слайдер */
+    .app {
+        height: 80vh; /* Залишаємо місце для хедера */
+    }
+    
+    .info__wrapper {
+        top: 60% !important; /* Опускаємо текст нижче */
+    }
 
-.card {
-  --card-translateY-offset: 100vh;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) translateX(var(--card-translateX-offset)) translateY(var(--card-translateY-offset))
-    rotateY(var(--card-rotation-offset)) scale(var(--card-scale-offset));
-  display: inline-block;
-  width: var(--card-width);
-  height: var(--card-height);
-  transition: transform var(--card-transition-duration) var(--card-transition-easing);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.card::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  z-index: 1;
-  transition: opacity var(--card-transition-duration) var(--card-transition-easing);
-  opacity: calc(1 - var(--opacity));
-}
-.card__image {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-.card__image img {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-}
-.card.current--card {
-  --current-card-rotation-offset: 0;
-  --card-translateX-offset: 0;
-  --card-rotation-offset: var(--current-card-rotation-offset);
-  --card-scale-offset: 1.2;
-  --opacity: 0.8;
-}
-.card.previous--card {
-  --card-translateX-offset: calc(-1 * var(--card-width) * 1.1);
-  --card-rotation-offset: 25deg;
-}
-.card.next--card {
-  --card-translateX-offset: calc(var(--card-width) * 1.1);
-  --card-rotation-offset: -25deg;
-}
-.card.previous--card,
-.card.next--card {
-  --card-scale-offset: 0.9;
-  --opacity: 0.4;
-}
+    .info h1.text.name {
+        font-size: 1.8rem; /* Зменшуємо заголовок книги */
+    }
+    
+    .info h4.text.location {
+        font-size: 1rem;
+    }
 
-.infoList {
-  position: absolute;
-  width: calc(3 * var(--card-width));
-  height: var(--card-height);
-  pointer-events: none;
-}
-.infoList .info__wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-}
-
-.info {
-  margin-bottom: calc(var(--card-height) / 8);
-  margin-left: calc(var(--card-width) / 1.5);
-  transform: translateZ(2rem);
-  transition: transform var(--card-transition-duration) var(--card-transition-easing);
-}
-.info .text {
-  position: relative;
-  font-family: "Montserrat";
-  font-size: calc(var(--card-width) * var(--text-size-offset, 0.2));
-  white-space: nowrap;
-  color: #fff;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-.info .name,
-.info .location {
-  text-transform: uppercase;
-}
-.info .location {
-  font-weight: 800;
-}
-.info .location {
-  --mg-left: 40px;
-  --text-size-offset: 0.12;
-  font-weight: 600;
-  margin-left: var(--mg-left);
-  margin-bottom: calc(var(--mg-left) / 2);
-  padding-bottom: 0.8rem;
-}
-.info .location::before,
-.info .location::after {
-  content: "";
-  position: absolute;
-  background: #fff;
-  left: 0%;
-  transform: translate(calc(-1 * var(--mg-left)), -50%);
-}
-.info .location::before {
-  top: 50%;
-  width: 20px;
-  height: 5px;
-}
-.info .location::after {
-  bottom: 0;
-  width: 60px;
-  height: 2px;
-}
-.info .description {
-  --text-size-offset: 0.065;
-  font-weight: 500;
-}
-.info.current--info {
-  opacity: 1;
-  display: block;
-}
-.info.previous--info,
-.info.next--info {
-  opacity: 0;
-  display: none;
-}
-
-.loading__wrapper {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #000;
-  z-index: 200;
-}
-.loading__wrapper .loader--text {
-  color: #fff;
-  font-family: "Montserrat";
-  font-weight: 500;
-  margin-bottom: 1.4rem;
-}
-.loading__wrapper .loader {
-  position: relative;
-  width: 200px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.25);
-}
-.loading__wrapper .loader span {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgb(255, 0, 0);
-  transform: scaleX(0);
-  transform-origin: left;
-}
-
-@media only screen and (min-width: 800px) {
-  :root {
-    --card-width: 250px;
-    --card-height: 400px;
-  }
-}
-.support {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  padding: 10px;
-  display: flex;
-}
-.support a {
-  margin: 0 10px;
-  color: #fff;
-  font-size: 1.8rem;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  transition: all 150ms ease;
-}
-.support a:hover {
-  transform: scale(1.1);
-}
-
-header{
- padding: 25px;
- margin: 10px;
-}
-
-#menu1{
- position: relative;
- display: block;
- width: 100%;
- height: auto;
- z-index: 10;
-}
-#menu1 ul{
- position: relative;
- display: block;
- margin: 0px;
- padding: 0px;
- width: 100%;
- height: auto;
- list-style: none;
-}
-#menu1 > ul::after{
- display: block;
- width: 100%;
- height: 0px;
- clear: both;
- content: " ";
-}
-#menu1 ul li{
- position: relative;
- display: block;
- float: left;
- width: auto;
- height: auto;
-}
-#menu1 ul li a{
- display: block;
- padding: 9px 25px 0px 25px;
- font-size: 14px;
- line-height: 1.3em;
- text-decoration: none;
- font-weight: bold;
- text-transform: uppercase;
- height: 36px;
- box-sizing: border-box;
- color: white;
-}
-#menu1 ul li ul{
- position: absolute;
- top: 36px;
- left: 0px;
- display: none;
- width: 200px;
- background: green;
-}
-#menu1 ul li:hover ul{
- display: block;
-}
-#menu1 ul li ul li{
- float: none;
- width: 100%;
-}
-#menu1 ul li ul li a{
- display: block;
- text-transform: none;
- height: auto;
- padding: 7px 25px;
- width: 100%;
- box-sizing: border-box;
- border-top: 1px solid #ffffff;
- color: white;
-}
-#menu1 ul li ul li:first-child a{
- border-top: 0px;
-}
-
-h1{
-  font-family: "Potta One", cursive;
- font-size: 70px;
- color : white;
- margin-left: 70px;
- margin-right: 70px;
- margin-top: 20px;
- margin-bottom: 20px;
+    /* 4. Кнопки вправо-вліво */
+    .cardList__btn {
+        top: 110%; /* Опускаємо кнопки під картки */
+    }
+    .cardList__btn.btn--left { left: 10%; }
+    .cardList__btn.btn--right { right: 10%; }
+    
+    /* 5. Модальні вікна на весь екран */
+    .modal-content {
+        width: 95%;
+        margin: 20% auto;
+    }
 }
