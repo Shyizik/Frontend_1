@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="st/style.css?v=999">
+    <link rel="stylesheet" href="st/style.css?v=1000">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800&display=swap">
     <title>Bookshelf</title>
     <link rel="icon" type="image/png" href="im/1.png">
 </head>
@@ -52,7 +52,7 @@
         <div class="infoList">
             <div class="info__wrapper">
                 <button class="cardList__btn btn btn--left">
-                    <div class="icon"><svg><use xlink:href="#arrow-left"></use></svg></div>
+                    <div class="icon"><i class="fas fa-chevron-left"></i></div>
                 </button>
                 
                 <div class="info current--info">
@@ -63,16 +63,16 @@
                 <div class="info next--info">
                     <h1 class="text name">"Маленькі жінки"</h1>
                     <h4 class="text location">Луїза Мей Елкотт</h4>
-                    <p class="text description">Історія про дорослішання чотирьох сестер.</p>
+                    <p class="text description">Історія чотирьох сестер.</p>
                 </div>
                 <div class="info previous--info">
                     <h1 class="text name">"Енн із зелених дахів"</h1>
                     <h4 class="text location">Люсі-Мод Монтгомері</h4>
-                    <p class="text description">Пригоди рудоволосої дівчинки Енн.</p>
+                    <p class="text description">Пригоди рудоволосої дівчинки.</p>
                 </div>
                 
                 <button class="cardList__btn btn btn--right">
-                    <div class="icon"><svg><use xlink:href="#arrow-right"></use></svg></div>
+                    <div class="icon"><i class="fas fa-chevron-right"></i></div>
                 </button>
             </div>
         </div>
@@ -115,11 +115,6 @@
             </form>
         </div>
     </div>
-
-    <svg class="icons" style="display: none;">
-        <symbol id="arrow-left" viewBox='0 0 512 512'><polyline points='328 112 184 256 328 400' style='fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px' /></symbol>
-        <symbol id="arrow-right" viewBox='0 0 512 512'><polyline points='184 112 328 256 184 400' style='fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px' /></symbol>
-    </svg>
 
     <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/gsap.min.js"></script>
