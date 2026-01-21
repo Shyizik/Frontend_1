@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="st/style.css?v=8">
+    <link rel="stylesheet" href="st/style.css?v=99">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap">
     <title>Bookshelf - Магазин Книг</title>
@@ -35,21 +35,22 @@
   </header>
     
     <div class="app">
+        
         <div class="cardList">
             <div class="cards__wrapper">
                 <div class="card current--card">
                     <div class="card__image">
-                        <img src="https://i.pinimg.com/564x/48/86/95/4886957557c3cc6a2c7823657f750f78.jpg" alt="Доріан" />
+                        <img src="https://i.pinimg.com/564x/48/86/95/4886957557c3cc6a2c7823657f750f78.jpg" alt="Dorian" />
                     </div>
                 </div>
                 <div class="card next--card">
                     <div class="card__image">
-                        <img src="https://i.pinimg.com/564x/a0/e7/06/a0e70617887eccd330e9477eea18febd.jpg" alt="Маленькі жінки" />
+                        <img src="https://i.pinimg.com/564x/a0/e7/06/a0e70617887eccd330e9477eea18febd.jpg" alt="Women" />
                     </div>
                 </div>
                 <div class="card previous--card">
                     <div class="card__image">
-                        <img src="https://i.pinimg.com/564x/39/91/63/399163816444e346d6771b2b8ac7aa85.jpg" alt="Енн" />
+                        <img src="https://i.pinimg.com/564x/39/91/63/399163816444e346d6771b2b8ac7aa85.jpg" alt="Anne" />
                     </div>
                 </div>
             </div>
@@ -60,3 +61,98 @@
                 <button class="cardList__btn btn btn--left">
                     <div class="icon"><svg><use xlink:href="#arrow-left"></use></svg></div>
                 </button>
+                
+                <div class="info current--info">
+                    <h1 class="text name">"Портрет Доріана Грея"</h1>
+                    <h4 class="text location">Оскар Вайлд</h4>
+                    <p class="text description">Філософський роман про вічну молодість.</p>
+                </div>
+                <div class="info next--info">
+                    <h1 class="text name">"Маленькі жінки"</h1>
+                    <h4 class="text location">Луїза Мей Елкотт</h4>
+                    <p class="text description">Історія про дорослішання чотирьох сестер.</p>
+                </div>
+                <div class="info previous--info">
+                    <h1 class="text name">"Енн із зелених дахів"</h1>
+                    <h4 class="text location">Люсі-Мод Монтгомері</h4>
+                    <p class="text description">Пригоди рудоволосої дівчинки Енн.</p>
+                </div>
+                
+                <button class="cardList__btn btn btn--right">
+                    <div class="icon"><svg><use xlink:href="#arrow-right"></use></svg></div>
+                </button>
+            </div>
+        </div>
+        
+        <div class="app__bg">
+            <div class="app__bg__image current--image">
+                <img src="https://i.pinimg.com/564x/48/86/95/4886957557c3cc6a2c7823657f750f78.jpg" alt="" />
+            </div>
+            <div class="app__bg__image next--image">
+                <img src="https://i.pinimg.com/564x/a0/e7/06/a0e70617887eccd330e9477eea18febd.jpg" alt="" />
+            </div>
+            <div class="app__bg__image previous--image">
+                <img src="https://i.pinimg.com/564x/39/91/63/399163816444e346d6771b2b8ac7aa85.jpg" alt="" />
+            </div>
+        </div>
+    </div>
+    
+    <div class="loading__wrapper">
+        <div class="loader--text">Loading...</div>
+        <div class="loader"><span></span></div>
+    </div>
+
+    <div id="catalogModal" class="modal">
+        <div class="modal-content catalog-modal">
+            <span class="close-btn close-catalog">&times;</span>
+            <h2>Каталог</h2>
+            <div class="book-grid">
+                <div class="book-card">
+                    <div class="book-img"><img src="https://i.pinimg.com/564x/48/86/95/4886957557c3cc6a2c7823657f750f78.jpg"></div>
+                    <div class="book-info"><div class="book-title">Доріан Грей</div><div class="book-price">350 ₴</div><button class="buy-btn-small" onclick="buyFromCatalog('dorian')">Купити</button><a href="page.html" class="details-link">Деталі</a></div>
+                </div>
+                <div class="book-card">
+                    <div class="book-img"><img src="https://i.pinimg.com/564x/a0/e7/06/a0e70617887eccd330e9477eea18febd.jpg"></div>
+                    <div class="book-info"><div class="book-title">Маленькі жінки</div><div class="book-price">280 ₴</div><button class="buy-btn-small" onclick="buyFromCatalog('women')">Купити</button><a href="page2.html" class="details-link">Деталі</a></div>
+                </div>
+                 <div class="book-card">
+                    <div class="book-img"><img src="https://i.pinimg.com/564x/39/91/63/399163816444e346d6771b2b8ac7aa85.jpg"></div>
+                    <div class="book-info"><div class="book-title">Енн із зелених дахів</div><div class="book-price">320 ₴</div><button class="buy-btn-small" onclick="buyFromCatalog('anne')">Купити</button><a href="page3.html" class="details-link">Деталі</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cartModal" class="modal">
+        <div class="modal-content cart-modal">
+            <span class="close-btn close-cart">&times;</span>
+            <h2>Замовлення</h2>
+            <form action="#">
+                <select id="book-select"><option value="dorian">Доріан Грей</option><option value="women">Маленькі жінки</option><option value="anne">Енн</option></select>
+                <input type="text" placeholder="Ім'я" required><input type="submit" value="ЗАМОВИТИ">
+            </form>
+        </div>
+    </div>
+
+    <svg class="icons" style="display: none;">
+        <symbol id="arrow-left" viewBox='0 0 512 512'><polyline points='328 112 184 256 328 400' style='fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px' /></symbol>
+        <symbol id="arrow-right" viewBox='0 0 512 512'><polyline points='184 112 328 256 184 400' style='fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px' /></symbol>
+    </svg>
+
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/gsap.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+        var cart=document.getElementById("cartModal"), cat=document.getElementById("catalogModal"), bs=document.getElementById("book-select");
+        document.getElementById("open-cart").onclick=()=>cart.style.display="block";
+        document.getElementById("open-catalog").onclick=()=>cat.style.display="block";
+        document.querySelectorAll(".close-btn").forEach(b=>b.onclick=()=>b.parentElement.parentElement.style.display="none");
+        window.onclick=(e)=>{if(e.target==cart)cart.style.display="none";if(e.target==cat)cat.style.display="none"};
+        function buyFromCatalog(v){cat.style.display="none";bs.value=v;cart.style.display="block";}
+        document.querySelector('#cartModal form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            cart.querySelector('.modal-content').innerHTML = "<div style='text-align:center;padding:30px;'><h2>Дякуємо!</h2><button onclick='location.reload()' style='margin-top:20px;padding:10px;background:#333;color:#fff;border:none;border-radius:5px;'>Закрити</button></div>";
+        });
+    </script>
+</body>
+</html>
