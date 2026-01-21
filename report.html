@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Звіт з лабораторної роботи</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+        }
+        /* Бокове меню */
+        nav {
+            width: 250px;
+            background: #f4f4f4;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+            border-right: 1px solid #ddd;
+        }
+        nav ul { list-style: none; padding: 0; }
+        nav ul li { margin-bottom: 10px; }
+        nav a { text-decoration: none; color: #333; font-weight: 500; }
+        nav a:hover { color: #007bff; }
+        
+        /* Основний контент */
+        main {
+            margin-left: 270px;
+            padding: 20px;
+            width: 100%;
+        }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        
+        /* Блоки коду */
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9em;
+        }
+        
+        /* Зображення */
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .screenshot-container { text-align: center; }
+        .caption { font-style: italic; color: #666; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h3>Зміст звіту</h3>
+        <ul>
+            <li><a href="#topic">1. Тема та Мета</a></li>
+            <li><a href="#links">2. Посилання</a></li>
+            <li><a href="#html-code">3. HTML код</a></li>
+            <li><a href="#css-code">4. CSS код</a></li>
+            <li><a href="#js-code">5. JS код</a></li>
+            <li><a href="#screens">6. Скріншоти сайту</a></li>
+            <li><a href="#github">7. GitHub Pages</a></li>
+            <li><a href="#conclusion">8. Висновки</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="header">
+            <h1>Звіт з лабораторної роботи №1</h1>
+            <p><strong>Виконав:</strong> студент групи ІО-31 Юхимчук Богдан</p>
+            <p><strong>Рік:</strong> 2025</p>
+        </section>
+
+        <section id="topic">
+            <h2>1. Тема та Мета</h2>
+            <p><strong>Тема:</strong> Створення веб-сайту "Bookshelf - Магазин Книг".</p>
+            <p><strong>Мета:</strong> Розробити багатосторінковий веб-сайт з використанням HTML, CSS та JavaScript, реалізувати слайдер, модальні вікна (кошик, каталог) та адаптивний дизайн.</p>
+        </section>
+
+        <section id="links">
+            <h2>2. Посилання</h2>
+            <ul>
+                <li><a href="https://github.com/shyizik/Frontend_1" target="_blank">🔗 Репозиторій на GitHub</a></li>
+                <li><a href="https://shyizik.github.io/Frontend_1/" target="_blank">🔗 Жива сторінка (GitHub Pages)</a></li>
+            </ul>
+        </section>
+
+        <section id="html-code">
+            <h2>3. HTML код</h2>
+            <p>Приклад структури головної сторінки (<code>index.html</code>):</p>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="uk"&gt;
+&lt;head&gt;
+    &lt;title&gt;Bookshelf - Магазин Книг&lt;/title&gt;
+    ...
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+      &lt;h1&gt;Bookshelf&lt;/h1&gt;
+      &lt;nav id="menu1"&gt;...&lt;/nav&gt;
+  &lt;/header&gt;
+  &lt;div class="app"&gt;
+      &lt;!-- Слайдер карток --&gt;
+      &lt;div class="cardList"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+  ...
+&lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </section>
+
+        <section id="css-code">
+            <h2>4. CSS код</h2>
+            <p>Стилізація карток та анімацій (фрагмент з <code>style.css</code>):</p>
+            <pre>
+:root {
+  --card-width: 200px;
+  --card-height: 300px;
+  --card-transition-duration: 800ms;
+}
+.card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transition: transform var(--card-transition-duration) ease;
+}
+.card.current--card {
+  --card-scale-offset: 1.2;
+  --opacity: 0.8;
+}
+            </pre>
+        </section>
+
+        <section id="js-code">
+            <h2>5. JS код</h2>
+            <p>Логіка перемикання слайдів (фрагмент з <code>main.js</code>):</p>
+            <pre>
+function swapCards(direction) {
+    const currentCardEl = cardsContainerEl.querySelector(".current--card");
+    const previousCardEl = cardsContainerEl.querySelector(".previous--card");
+    const nextCardEl = cardsContainerEl.querySelector(".next--card");
+
+    changeInfo(direction);
+    swapCardsClass();
+}
+            </pre>
+        </section>
+
+        <section id="screens">
+            <h2>6. Скріншоти сайту</h2>
+            
+            <div class="screenshot-container">
+                <p>Головна сторінка зі слайдером:</p>
+                <img src="image_d722ae.png" alt="Головна сторінка"> 
+            </div>
+
+            <div class="screenshot-container">
+                <p>Сторінка "Маленькі жінки" з описом:</p>
+                <img src="image_d560b9.png" alt="Сторінка книги">
+            </div>
+
+            <div class="screenshot-container">
+                <p>Робота слайдера (анімація переходу):</p>
+                <img src="image_d6ba33.png" alt="Слайдер">
+            </div>
+        </section>
+
+        <section id="github">
+            <h2>7. Налаштування GitHub Pages</h2>
+            <p>Сайт було успішно задеплоєно через GitHub Pages.</p>
+            <div class="screenshot-container">
+                <img src="image_d4829f.png" alt="Налаштування GitHub Pages">
+                <p class="caption">Процес збірки сайту на гілці master</p>
+            </div>
+            <div class="screenshot-container">
+                <img src="image_d48a63.png" alt="Структура файлів">
+                <p class="caption">Структура файлів у репозиторії</p>
+            </div>
+        </section>
+
+        <section id="conclusion">
+            <h2>8. Висновки</h2>
+            <p>
+                В ході виконання лабораторної роботи було створено веб-сайт книжкового магазину. 
+                Я навчився працювати з CSS-анімаціями, реалізував 3D-слайдер карток за допомогою JavaScript (GSAP), 
+                створив модальні вікна для кошика та каталогу. Сайт повністю адаптований та розміщений на хостингу GitHub Pages.
+            </p>
+        </section>
+    </main>
+
+</body>
+</html>
