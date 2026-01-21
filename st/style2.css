@@ -1,122 +1,69 @@
-header, footer {
- background-color: #2e2f5b;
- padding: 25px;
- margin: -10px;
-}
-main {
- padding: 90px;
- background-color: #F4D35E;
- margin: -10px;
-}
-.post {
- background-color: #505581;
- padding: 20px;
- border-radius: 50px;
- margin-bottom: 40px;
- width: 100%;
-}
-.post img {
- margin: 20px;
-}
-.footer-column {
- margin: 20px;
-}
-#menu1{
- position: relative;
- display: block;
- width: 100%;
- height: auto;
- z-index: 10;
-}
-#menu1 ul{
- position: relative;
- display: block;
- margin: 0px;
- padding: 0px;
- width: 100%;
- height: auto;
- list-style: none;
-}
-#menu1 > ul::after{
- display: block;
- width: 100%;
- height: 0px;
- clear: both;
- content: " ";
-}
-#menu1 ul li{
- position: relative;
- display: block;
- float: left;
- width: auto;
- height: auto;
-}
-#menu1 ul li a{
- display: block;
- padding: 9px 25px 0px 25px;
- font-size: 14px;
- line-height: 1.3em;
- text-decoration: none;
- font-weight: bold;
- text-transform: uppercase;
- height: 36px;
- box-sizing: border-box;
- color: #FAF0CA;
-}
-#menu1 ul li ul{
- position: absolute;
- top: 36px;
- left: 0px;
- display: none;
- width: 200px;
-}
-#menu1 ul li:hover ul{
- display: block;
-}
-#menu1 ul li ul li{
- float: none;
- width: 100%;
-}
-#menu1 ul li ul li a{
- display: block;
- text-transform: none;
- height: auto;
- padding: 7px 25px;
- width: 100%;
- box-sizing: border-box;
- border-top: 1px solid #ffffff;
- color: #FAF0CA;
-}
-#menu1 ul li ul li:first-child a{
- border-top: 0px;
-}
-footer{
-color : #FAF0CA;
-}
+/* --- АДАПТИВНІСТЬ ДЛЯ СТОРІНОК КНИГ --- */
 
-h3{
-  font-family: "Potta One", cursive;
- font-weight: 700;
- color: #FAF0CA;
-}
-p{
-font-family: "Imbue", serif;
- font-size : 30px;
- color: #FAF0CA;
-}
-li{
-  font-family: 'Hachi Maru Pop', cursive;
-}
-h1{
-  font-family: "Potta One", cursive;
- font-weight: 700;
- color : #FAF0CA;
-}
-.leftimg {
-float:left;
-margin: 7px 7px 7px 0;
-}
-.rightimg {
-float: right;
-margin: 0 7px 7px 7px;
+@media only screen and (max-width: 768px) {
+    /* 1. Зменшуємо відступи основного блоку */
+    main {
+        padding: 20px; /* Було 90px, що забагато для телефону */
+        width: auto;
+        margin: 0;
+    }
+
+    /* 2. Робімо картинки адаптивними */
+    .post img, .leftimg, .rightimg {
+        float: none !important; /* Вимикаємо обтікання текстом */
+        display: block;
+        margin: 0 auto 20px auto; /* Центруємо картинку */
+        max-width: 100%; /* Щоб не вилазила за екран */
+        height: auto;
+    }
+
+    /* 3. Текст */
+    .post {
+        padding: 15px;
+        border-radius: 20px;
+    }
+    
+    p {
+        font-size: 18px; /* Зменшуємо шрифт (був 30px) для зручності читання */
+        text-align: justify;
+    }
+
+    /* 4. Меню нагорі */
+    header {
+        padding: 15px;
+        flex-direction: column;
+    }
+    
+    #menu1 ul {
+        flex-direction: column; /* Пункти меню один під одним або сіткою */
+        gap: 5px;
+    }
+    
+    #menu1 ul li a {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+
+    /* 5. Футер в стовпчик */
+    .footer-columns {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .footer-column {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* 6. Модальні вікна */
+    .catalog-modal, .cart-modal {
+        width: 95%;
+        max-width: 95%;
+    }
+    
+    /* Сітка каталогу в модальному вікні: 1 колонка */
+    .book-grid {
+        grid-template-columns: 1fr; 
+    }
 }
